@@ -6,6 +6,7 @@ rules:
   steps:
   - intent: goodbye
   - action: utter_goodbye
+  - action: action_listen
 
 - rule: Say 'I am a bot' anytime the user challenges
   steps:

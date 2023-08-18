@@ -1,6 +1,7 @@
 version: '3.1'
 intents:
 - affirm
+- ask_weather
 - bot_challenge
 - deny
 - goodbye
@@ -33,3 +34,4 @@ entities:
 actions:
 - utter_intro
 - utter_greet
+- action_get_weather

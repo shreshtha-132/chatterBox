@@ -15,6 +15,7 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+    - kya haal hai bhai kay
 - intent: goodbye
   examples: |
     - cu
@@ -83,6 +84,7 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    - who are you ?
 - intent: intro
   examples: |
     - what is your name?
@@ -90,6 +92,16 @@ nlu:
     - name ?
     - what is your name ?
     - who developed you ?
+    - who are you ?
+    - what is your origin ?
+    - where do you belong ?
+    - what is the weather ?
+    - what is your name ?\
 - intent: nlu_fallback
   examples: |
     - ./exit
+- intent: ask_weather
+  examples: |
+    - what is the weather ?
+    - weather ?
+    - how is the weather ?

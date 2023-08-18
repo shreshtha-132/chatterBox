@@ -38,14 +38,63 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
+- story: Get Weather
+  steps:
+    - intent: ask_weather
+    - action: action_get_weather
+
+
+
+
+
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: intro
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: intro
+  - intent: ask_weather
+  - action: action_get_weather
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: nlu_fallback
+  - intent: ask_weather
+  - action: action_get_weather
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: nlu_fallback
+  - intent: ask_weather
+  - action: action_get_weather
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: nlu_fallback
+  - intent: ask_weather
+  - action: action_get_weather
+  - intent: ask_weather
+  - action: action_get_weather
+  - intent: ask_weather
+  - action: action_get_weather
+  - intent: nlu_fallback
+  - intent: ask_weather
+  - action: action_get_weather
+  - intent: nlu_fallback
+
 - story: interactive_story_1
   steps:
   - intent: intro
-  - action: utter_greet
-  - intent: intro
   - action: utter_intro
-  - intent: intro
-  - action: utter_intro
-  - intent: intro
-  - action: utter_intro
-  - intent: nlu_fallback

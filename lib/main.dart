@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
-// import 'htt';
 import 'dart:convert';
 
-void main() async {
-  await dotenv.load(fileName: "assets/.env");
+void main() {
   runApp(ChatbotApp());
 }
 
@@ -66,36 +63,21 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<String> _getBotResponse(String userMessage) async {
-    final apiKey = dotenv.env['OPENAI_API_KEY'];
-
-    if (apiKey == null) {
-      return 'Error: API key not found';
-    }
-
-    final headers = {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer $apiKey',
-    };
-
-    final body = {
-      'model': 'text-davinci-003',
-      'prompt': userMessage,
-      'max_tokens': 7,
-      'temperature': 0,
-    };
-
     final response = await http.post(
-      Uri.parse('https://api.openai.com/v1/completions'),
-      headers: headers,
-      body: jsonEncode(body),
+      Uri.parse(
+          'http://localhost:5055/webhooks/rest/webhook'), // Replace with your Rasa API endpoint
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'sender': 'user', 'message': userMessage}),
     );
 
     if (response.statusCode == 200) {
-      final jsonResponse = json.decode(response.body);
-      final botResponse = jsonResponse['choices'][0]['text'];
+      List<dynamic> responseData = jsonDecode(response.body);
+      String botResponse = responseData.isNotEmpty
+          ? responseData[0]['text']
+          : 'No response from bot';
       return botResponse;
     } else {
-      print("siyapaa");
+      print("Error calling Rasa API");
       print(response.statusCode);
       return 'Error: Unable to get bot response';
     }
